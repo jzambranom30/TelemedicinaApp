@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistroActivity">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logoapputeq" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_nombre"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:hint="Nombres:"
+        app:layout_constraintBottom_toTopOf="@+id/txt_cedula"
+        app:layout_constraintEnd_toStartOf="@+id/txt_apellido"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo"
+        app:counterEnabled="true"
+        app:counterMaxLength="30">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_apellido"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:hint="Apellidos:"
+        app:layout_constraintBottom_toTopOf="@+id/txt_edad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_nombre"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo"
+        app:counterEnabled="true"
+        app:counterMaxLength="30">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textPersonName"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_cedula"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:hint="Cédula:"
+        app:layout_constraintBottom_toTopOf="@+id/rgTipoUsuario"
+        app:layout_constraintEnd_toStartOf="@+id/txt_edad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_nombre"
+        app:counterEnabled="true"
+        app:counterMaxLength="10">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_edad"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:hint="Edad:"
+        app:layout_constraintBottom_toTopOf="@+id/rgTipoUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_cedula"
+        app:layout_constraintTop_toBottomOf="@+id/txt_apellido"
+        app:counterEnabled="true"
+        app:counterMaxLength="2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_TipoUsuario"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Tipo de usuario:"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_usuario"
+        app:layout_constraintEnd_toStartOf="@+id/rgTipoUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_cedula" />
+
+    <RadioGroup
+        android:id="@+id/rgTipoUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/txt_usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txt_TipoUsuario"
+        app:layout_constraintTop_toBottomOf="@id/txt_edad">
+
+        <RadioButton
+            android:id="@+id/rbMedico"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="Personal Médico"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rbAdministrativo"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="Administrativo/Docente"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rbEstudiante"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="Estudiante"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_usuario"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:hint="Email:"
+        app:layout_constraintBottom_toTopOf="@+id/txt_departamento"
+        app:layout_constraintEnd_toStartOf="@+id/txt_hora"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgTipoUsuario"
+        app:counterEnabled="true"
+        app:counterMaxLength="30">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_hora"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña:"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@+id/txt_cargo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txt_usuario"
+        app:layout_constraintTop_toBottomOf="@id/rgTipoUsuario"
+        app:counterEnabled="true"
+        app:counterMaxLength="12">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_departamento"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:hint="Departamento/Facultad:"
+        app:layout_constraintBottom_toTopOf="@+id/btRegistro"
+        app:layout_constraintEnd_toStartOf="@+id/txt_cargo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_usuario"
+        app:counterEnabled="true"
+        app:counterMaxLength="20">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_cargo"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:hint="Cargo/Carrera:"
+        app:layout_constraintBottom_toTopOf="@+id/btRegistro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txt_departamento"
+        app:layout_constraintTop_toBottomOf="@id/txt_hora"
+        app:counterEnabled="true"
+        app:counterMaxLength="20">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btRegistro"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#3D7A40"
+        android:onClick="btRegistro"
+        android:text="Registrarme"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:icon="@drawable/ic_action_person"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_departamento" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

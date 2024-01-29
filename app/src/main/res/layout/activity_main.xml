@@ -6,13 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logoapputeq" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_usuario"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese su email"
+        app:layout_constraintBottom_toTopOf="@+id/txt_hora"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_hora"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese su contraseña"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@+id/btLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_usuario"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btLogin"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#3D7A40"
+        android:onClick="btLogin"
+        android:text="Iniciar Sesión"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:icon="@drawable/ic_action_person"
+        app:layout_constraintBottom_toTopOf="@+id/txtMsgRegistro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_hora" />
+
+    <TextView
+        android:id="@+id/txtMsgRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Usuario Nuevo? ¡Registrese ahora!"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btRegistro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btLogin" />
+
+    <Button
+        android:id="@+id/btRegistro"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#3D7A40"
+        android:onClick="btRegistro"
+        android:text="Ir a Registro"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:icon="@drawable/ic_action_person"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
