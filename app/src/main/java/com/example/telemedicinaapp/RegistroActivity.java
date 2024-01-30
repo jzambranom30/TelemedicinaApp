@@ -126,11 +126,11 @@ public class RegistroActivity extends AppCompatActivity {
 
         if (tipousuariov == 0){
             mensaje.setText("El tipo de usuario es obligatorio");
-            mensaje.setTextColor(ContextCompat.getColor(this, R.color.colorError));
+            mensaje.setTextColor(ContextCompat.getColor(this, R.color.rojo));
             res = false;
         } else {
             mensaje.setText("Tipo usuario:");
-            mensaje.setTextColor(ContextCompat.getColor(this, R.color.colorNegro));
+            mensaje.setTextColor(ContextCompat.getColor(this, R.color.negro));
         }
 
         return res;
@@ -184,7 +184,7 @@ public class RegistroActivity extends AppCompatActivity {
                                         cargo.setError(jsonResponse.getString(key));
                                     case "tipousuario":
                                         mensaje.setText(jsonResponse.getString(key));
-                                        mensaje.setTextColor(ContextCompat.getColor(this, R.color.colorError));
+                                        mensaje.setTextColor(ContextCompat.getColor(this, R.color.rojo));
                                     case "success":
                                         Toast.makeText(getApplicationContext(), jsonResponse.getString(key), Toast.LENGTH_SHORT).show();
 

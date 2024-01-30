@@ -2,6 +2,7 @@ package com.example.telemedicinaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.telemedicinaapp.Modelo.Autenticacion;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONException;
@@ -81,10 +83,9 @@ public class MainActivity extends AppCompatActivity {
                                 username.getEditText().setText("");
                                 password.getEditText().setText("");
 
-                                Bundle b=new Bundle();
-                                b.putString("Token", jsonResponse.getString("token"));
+                                String token = jsonResponse.getString("token");
+                                Autenticacion.saveToken(getApplicationContext(), token);
                                 Intent intent= new Intent(MainActivity.this, UsuarioMainActivity.class);
-                                intent.putExtras(b);
                                 startActivity(intent);
                                 Toast.makeText(getApplicationContext(), "Iniciando Sesión .......!", Toast.LENGTH_SHORT).show();
                             }

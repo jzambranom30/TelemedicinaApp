@@ -44,8 +44,4 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
 
-    <color name="colorError">#CF0303</color>
-    <color name="colorNegro">#000</color>
-
-
 </resources>

@@ -16,6 +16,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.telemedicinaapp.Adaptador.AdaptadorCita;
+import com.example.telemedicinaapp.Modelo.Autenticacion;
 import com.example.telemedicinaapp.Modelo.Cita;
 
 import org.json.JSONArray;
@@ -38,22 +39,14 @@ public class UsuarioMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_usuario_main);
 
         TextView respuesta = findViewById(R.id.txt_Mensaje);
-        Bundle bundle = getIntent().getExtras();
 
         //VISTA
         lstOp = (ListView) findViewById(R.id.lstCita);
-        View header = getLayoutInflater().inflate(R.layout.ly_titulo_cita_usuario, null);
-        lstOp.addHeaderView(header);
 
         queue = Volley.newRequestQueue(this); // Inicializa la RequestQueue
         String url = "http://192.168.1.13/datoscita.php";
-
-        if (bundle != null) {
-            String token = bundle.getString("Token");
-            if (token != null) {
-                datousuario(url, token, respuesta);
-            }
-        }
+        String token = Autenticacion.getToken(getApplicationContext());
+        datousuario(url, token, respuesta);
     }
 
     private void datousuario(String url, String token, TextView respuesta) {
@@ -81,8 +74,6 @@ public class UsuarioMainActivity extends AppCompatActivity {
                         // Continúa con la creación del adaptador y la asignación al ListView como antes
                         AdaptadorCita adaptadorCita = new AdaptadorCita(this, lstCita);
                         lstOp.setAdapter(adaptadorCita);
-
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -123,47 +114,42 @@ public class UsuarioMainActivity extends AppCompatActivity {
 
     public void logout( Boolean res) {
         String url = "http://192.168.1.13/logout.php";
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            String token = bundle.getString("Token");
-            if (token != null) {
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                        response -> {
-                            try {
-                                JSONObject jsonResponse = new JSONObject(response);
+        String token = Autenticacion.getToken(getApplicationContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
 
-                                if (jsonResponse.has("error")) {
-                                    Toast.makeText(getApplicationContext(), jsonResponse.getString("error"), Toast.LENGTH_SHORT).show();
-                                }
-                                if (jsonResponse.has("success")) {
-                                    if(res){
-                                        Intent intent = new Intent(UsuarioMainActivity.this, MainActivity.class);
-                                        startActivity(intent);
-                                        Toast.makeText(getApplicationContext(), jsonResponse.getString("success"), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                        if (jsonResponse.has("error")) {
+                            Toast.makeText(getApplicationContext(), jsonResponse.getString("error"), Toast.LENGTH_SHORT).show();
+                        }
+                        if (jsonResponse.has("success")) {
+                            if(res){
+                                Intent intent = new Intent(UsuarioMainActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                Toast.makeText(getApplicationContext(), jsonResponse.getString("success"), Toast.LENGTH_SHORT).show();
                             }
-                        },
-                        error -> {
-                            if (error.networkResponse != null) {
-                                Toast.makeText(getApplicationContext(), "Error: " + error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Error de red ", Toast.LENGTH_SHORT).show();
-                            }
-                        }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        Map<String, String> headers = new HashMap<>();
-                        headers.put("Authorization", "Bearer " + token);
-                        return headers;
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                };
-
-                queue.add(stringRequest);
+                },
+                error -> {
+                    if (error.networkResponse != null) {
+                        Toast.makeText(getApplicationContext(), "Error: " + error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Error de red ", Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
             }
-        }
+        };
+
+        queue.add(stringRequest);
     }
 
     public void btSalir(View view) {
