@@ -44,7 +44,7 @@ public class UsuarioMainActivity extends AppCompatActivity {
         lstOp = (ListView) findViewById(R.id.lstCita);
 
         queue = Volley.newRequestQueue(this); // Inicializa la RequestQueue
-        String url = "http://192.168.1.13/datoscita.php";
+        String url = "https://apptelemedicina.000webhostapp.com/datoscita.php";
         String token = Autenticacion.getToken(getApplicationContext());
         datousuario(url, token, respuesta);
     }
@@ -113,7 +113,7 @@ public class UsuarioMainActivity extends AppCompatActivity {
     }
 
     public void logout( Boolean res) {
-        String url = "http://192.168.1.13/logout.php";
+        String url = "https://apptelemedicina.000webhostapp.com/logout.php";
         String token = Autenticacion.getToken(getApplicationContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 response -> {

@@ -68,7 +68,7 @@ public class RegistroCitaActivity extends AppCompatActivity {
         TextView mensaje = findViewById(R.id.tw_MsgRegistro);
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.1.13/registrocitas.php";
+        String url = "https://apptelemedicina.000webhostapp.com/registrocitas.php";
         String token = Autenticacion.getToken(getApplicationContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
         response -> {

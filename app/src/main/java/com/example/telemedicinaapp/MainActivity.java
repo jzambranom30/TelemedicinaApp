@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(validarEntradas()){
             RequestQueue queue = Volley.newRequestQueue(this);
-            String url = "http://192.168.1.13/login.php";
+            String url = "https://apptelemedicina.000webhostapp.com/login.php";
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                     response -> {

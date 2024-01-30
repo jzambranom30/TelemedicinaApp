@@ -148,7 +148,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         if(validarEntradas()) {
             RequestQueue queue = Volley.newRequestQueue(this);
-            String url = "http://192.168.1.13/registro.php";
+            String url = "https://apptelemedicina.000webhostapp.com/registro.php";
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                     response -> {
