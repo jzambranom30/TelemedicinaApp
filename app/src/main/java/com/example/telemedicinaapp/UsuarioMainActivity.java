@@ -161,4 +161,9 @@ public class UsuarioMainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void btLlamada(View view) {
+        Intent intent = new Intent(UsuarioMainActivity.this, TeleConsultaActivity.class);
+        startActivity(intent);
+    }
+
 }
